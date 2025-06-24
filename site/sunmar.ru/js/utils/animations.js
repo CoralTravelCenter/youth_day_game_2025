@@ -1,5 +1,9 @@
 import {gsap} from "gsap";
 
+function getGameField() {
+  return document.querySelector('.screen--game');
+}
+
 export function markSelected(card) {
   const target = card.querySelector('.card-front');
   gsap.to(target, {backgroundColor: '#FFE7AE', duration: 0.2});
@@ -18,7 +22,7 @@ export function flashRed(card) {
 export function flashGreen(card) {
   const front = card.querySelector('.card-front');
   const back = card.querySelector('.card-back');
-  const gameField = document.querySelector('.game-screen');
+  const gameField = getGameField();
   gsap.to(front, {
     backgroundColor: '#C1FBB1',
     duration: 0.5,
@@ -52,7 +56,7 @@ export function flashGreen(card) {
 
 export function resetCard(card) {
   const front = card.querySelector('.card-front');
-  const gameField = document.querySelector('.game-screen');
+  const gameField = getGameField();
   gsap.to(front, {
     backgroundColor: '#ffffff',
     duration: 0.2,
@@ -63,7 +67,7 @@ export function resetCard(card) {
 }
 
 export function animateMatchIcon(matchIcon, icon) {
-  const gameField = document.querySelector('.game-screen');
+  const gameField = getGameField();
   gsap.to(matchIcon, {
       scale: 1,
       opacity: 1,
@@ -90,21 +94,23 @@ export function animateMatchIcon(matchIcon, icon) {
 }
 
 export function animateCardFields() {
-  gsap.to('.pair-card-container, .main-card-container', {
+  gsap.to('.game-board__associations, .game-board__question', {
     y: 0,
     duration: 0.5,
     delay: 1,           // начальная задержка перед всей анимацией
     stagger: 0.2,       // задержка между элементами — волнообразный эффект
     ease: 'power2.inOut',
     onComplete: () => {
-      removeHowToPlay()
+      setTimeout(() => {
+        removeHowToPlay()
+      }, 1500)
     }
   })
 }
 
 export function removeHowToPlay() {
-  const howToPlay = document.querySelector('.how-to-play');
-  const visual = document.querySelector('.game-screen .visual');
+  const howToPlay = document.querySelector('.game-instructions');
+  const visual = document.querySelector('.screen--game .screen__visual');
   howToPlay.style.opacity = '0';
   visual.style.filter = 'brightness(1)';
 }

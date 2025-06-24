@@ -1,43 +1,77 @@
 import checkPair from "./checkPair";
 import {animateMatchIcon, flashGreen, flashRed, markSelected, resetCard} from "./animations";
+import {gsap} from "gsap";
+import {goToFinal} from "./screenManager";
 
-let selectedMain = null;
-let selectedPair = null;
+const matchedPairs = new Set();
+const selected = {main: null, pair: null};
+
+function setSelected(type, card) {
+  if (type === 'main') {
+    if (selected.main !== card) {
+      if (selected.main) resetCard(selected.main);
+      selected.main = card;
+    }
+    // else do nothing (already selected)
+    // do not reset pair
+  } else if (type === 'pair') {
+    if (selected.pair !== card) {
+      if (selected.pair) resetCard(selected.pair);
+      selected.pair = card;
+    }
+    // else do nothing (already selected)
+    // do not reset main
+  }
+}
 
 export default function handleCardClick(card, type, icon) {
-  if (card.classList.contains('matched') || card.classList.contains('selected')) return;
+  let isMatch = false
 
+  setSelected(type, card);
   markSelected(card);
 
-  if (type === 'main') {
-    if (selectedMain) resetCard(selectedMain);
-    selectedMain = card;
-  } else {
-    if (selectedPair) resetCard(selectedPair);
-    selectedPair = card;
-  }
-
-  if (selectedMain && selectedPair) {
-    const isMatch = checkPair(selectedMain, selectedPair);
+  if (selected.main && selected.pair) {
+    isMatch = checkPair(selected.main, selected.pair);
 
     if (isMatch) {
-      selectedMain.classList.add('matched');
-      selectedPair.classList.add('matched');
-      flashGreen(selectedMain);
-      flashGreen(selectedPair);
-      const pairId = selectedMain.dataset.pairId;
+      const pairId = selected.main.dataset.pairId;
+      matchedPairs.add(pairId);
+      flashGreen(selected.main);
+      flashGreen(selected.pair);
       const matchIcon = document.querySelector(`.icon[data-pair-id="${pairId}"]`);
       if (matchIcon) {
         animateMatchIcon(matchIcon, icon);
       }
+      if (matchedPairs.size === 9) {
+        setTimeout(() => goToFinal(), 1000)
+      }
     } else {
-      flashRed(selectedMain);
-      flashRed(selectedPair);
+      flashRed(selected.main);
+      flashRed(selected.pair);
+      setTimeout(() => {
+        resetCard(selected.main);
+        resetCard(selected.pair);
+        selected.main = null;
+        selected.pair = null;
+      }, 600);
     }
-
-    setTimeout(() => {
-      selectedMain = null;
-      selectedPair = null;
-    }, 600);
   }
+}
+
+export function resetGame() {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    gsap.killTweensOf(card);
+    gsap.set(card, {clearProps: "all"});
+  });
+
+  const icons = document.querySelectorAll('.icon');
+  icons.forEach(icon => {
+    gsap.killTweensOf(icon);
+    gsap.set(icon, {clearProps: "all"});
+  });
+
+  matchedPairs.clear();
+  selected.main = null;
+  selected.pair = null;
 }
