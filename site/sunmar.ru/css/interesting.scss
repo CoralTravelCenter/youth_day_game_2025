@@ -1,0 +1,49 @@
+@use "../../common/css/mixins";
+
+section.interesting-places > article .contenu {
+  .tab-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .tabs {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    padding: 8px;
+    margin: 0;
+    border-radius: 40px;
+    background: var(--Base-color_Base_Light_Gray, #F5F5F8);
+    align-items: flex-start;
+    gap: var(--padding-paddingXS, 8px);
+    align-self: stretch;
+    justify-content: flex-start;
+    scroll-padding-inline: 8px;
+
+    @include mixins.scroll-snap;
+    @include mixins.hide-scrollbar;
+
+    .tab {
+      padding: 16px 30px;
+      @include mixins.flex-center;
+      flex-shrink: 0;
+      border-radius: 100px;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      background: #061A3E;
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+
+  .tab-panes {
+    margin: 0;
+    padding: 0;
+
+    @include mixins.flex-grid(1, 16px, center);
+  }
+}

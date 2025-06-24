@@ -1,0 +1,15 @@
+{
+  "env": {
+    "brand": "sunmar-next",
+    "cdnAssetsURL": "//b2ccdn.sunmar.ru/content/landing-pages/seo-template"
+  },
+  "sections": [
+    "site/sunmar.ru/markup/global.html",
+    "site/sunmar.ru/markup/kv.html",
+    "site/sunmar.ru/markup/navigation.html",
+    "site/sunmar.ru/markup/text.html",
+    "site/sunmar.ru/markup/advantages.html",
+    "site/sunmar.ru/markup/text-2.html",
+    "site/sunmar.ru/markup/interesting-places-tabs-no-sl.html"
+  ]
+}

@@ -1,0 +1,42 @@
+@use "../mixins";
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+section.hero > article .contenu {
+  @include mixins.sunmar-hero-layout;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+section.hero.full-width {
+  @include mixins.hero-layout-full-width;
+}
+
+.row-container.layout-container-limit.center:has(section.full-width) {
+  overflow-x: visible;
+}
+
+[data-vimeo-mobile] {
+  display: block;
+
+  @include mixins.respond-up(md) {
+    display: none;
+  }
+}
+
+[data-vimeo-desktop] {
+  display: none;
+
+  @include mixins.respond-up(md) {
+    display: block;
+  }
+}

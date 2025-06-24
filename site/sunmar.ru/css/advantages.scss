@@ -1,0 +1,69 @@
+@use "../../common/css/mixins";
+
+section.advantages {
+  &:after {
+    background: url("https://b2ccdn.sunmar.ru/content/landing-pages/seo-template/benefits-bg-mob.png"), #F5F5F8;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: contain;
+
+    @include mixins.respond-up(md) {
+      background: url("https://b2ccdn.sunmar.ru/content/landing-pages/seo-template/benefits-bg-tablet.png"), #F5F5F8;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    @include mixins.respond-up(xl) {
+      background: url("https://b2ccdn.sunmar.ru/content/landing-pages/seo-template/benefits-bg.png"), #F5F5F8;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+
+  > article .contenu {
+    .advantages__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      @include mixins.flex-grid(1, 16px, center);
+
+      @include mixins.respond-up(md) {
+        @include mixins.flex-grid(2, 16px, center);
+      }
+
+      @include mixins.respond-up(xl) {
+        @include mixins.flex-grid(3, 16px, center);
+      }
+    }
+
+    .advantages__card {
+      border-radius: var(--radius-border_Radius_Base, 16px);
+      background: var(--Base-color_Base_Light, #FFF);
+
+      padding: var(--padding-padding_3XL, 48px) var(--padding-padding_N, 16px) var(--padding-padding_3XL, 48px) var(--padding-padding_L, 24px);
+
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      @include mixins.flex-center;
+      line-height: 20px;
+      text-align: center;
+
+
+      @include mixins.respond-up(md) {
+        &:last-child {
+          width: 100%;
+        }
+      }
+
+      @include mixins.respond-up(md) {
+        &:nth-last-child(-n+2) {
+          width: calc(50% - 8px);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@use '../../common/css/mixins';
+
+section.navigation-to-countries > article .contenu {
+  padding-block: 32px;
+
+  .navigation-to-countries__list {
+    list-style: none;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    padding: 8px;
+    border-radius: 42px;
+    gap: 8px;
+    justify-content: start;
+    background: var(--Base-color_Base_Light_Gray, #F5F5F8);
+    @include mixins.hide-scrollbar;
+  }
+
+  .navigation-to-countries__item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 30px;
+    font-size: 16px;
+    scroll-snap-align: start;
+    cursor: pointer;
+    border-radius: 100px;
+  }
+
+  .navigation-to-countries__item.active {
+    font-weight: 600;
+  }
+}

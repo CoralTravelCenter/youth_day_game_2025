@@ -1,0 +1,65 @@
+.prime-btn {
+  border-radius: 40px;
+  background: var(--gradient_Primary, linear-gradient(245deg, var(--Gradient-color_Gradinet_Primary_Second, #D8242A) 15.84%, var(--Gradient-color_Gradient_Primary_First, #E7317D) 84.16%));
+  padding: 12px 32px;
+  height: 48px;
+  border: none;
+  color: var(--color_Text_Light) !important;
+  text-decoration: none !important;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition);
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color_Btn_Bg_Hover);
+    }
+  }
+
+  &:active {
+    background-color: var(--color_Btn_Bg_Pressed);
+  }
+
+  &:focus-visible {
+    background-color: var(--color_Btn_Bg_Focused);
+    outline: 1px solid var(--color_Btn_Border_Focused);
+  }
+
+  &:disabled {
+    background-color: var(--color_Btn_Bg_Disabled);
+  }
+}
+
+.prime-btn.blue {
+  background: #0e2855;
+}
+
+.prime-link {
+  font-size: var(--font_Size_Body);
+  color: var(--color_Btn_Bg_Default);
+  transition: color var(--transition);
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color_Btn_Bg_Hover);
+    }
+  }
+
+  &:active {
+    color: var(--color_Btn_Bg_Pressed);
+  }
+
+  &:focus-visible {
+    color: var(--color_Btn_Text_Ghost_Focused);
+    text-decoration: underline;
+  }
+
+  &:disabled {
+    color: var(--color_Text_Dark);
+  }
+}

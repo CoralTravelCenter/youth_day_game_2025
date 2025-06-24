@@ -1,0 +1,51 @@
+@use "../../common/css/sunmar/sunmar-landing";
+@use '../../common/css/mixins';
+
+.bages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-block: 16px;
+
+  .info-bage {
+    display: flex;
+    padding: 12px 28px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-radius: 100px;
+    background: var(--Base-color_Base_Light_Alt1, #DFDFE8);
+    font-size: 16px;
+    width: fit-content;
+  }
+}
+
+.tab-panes .tab-pane {
+  display: none
+}
+
+.tab-panes .active {
+  display: block
+}
+
+.info-cards {
+  @include mixins.flex-grid(1, 16px, center);
+
+  .info-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #F5F5F8;
+    border-radius: 16px;
+    overflow: clip;
+
+    .content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+}
