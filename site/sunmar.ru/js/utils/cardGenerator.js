@@ -1,5 +1,6 @@
 import handleCardClick from "./handleCardClick";
 import {ICONS} from "../gameData";
+import {gsap} from "gsap";
 
 function createElement(item, icon) {
   const isPairCard = Boolean(item.pareImg);
@@ -26,19 +27,32 @@ export function iconsGenerator(icons, container) {
   icons.forEach(el => {
     const icon = document.createElement('div');
     icon.className = 'icon';
-    icon.style.opacity = '0';
     icon.dataset.pairId = el.name;
     icon.innerHTML = `<img src="${el.icon}"/>`;
+    if (el.endState) {
+      Object.assign(icon.style, {
+        top: el.endState.top,
+        left: el.endState.left,
+        width: el.endState.width,
+        height: el.endState.height,
+      })
+    }
+    gsap.set(icon, {
+      x: el.startX,
+      y: el.startY,
+      scale: el.startScale
+    })
     if (el.zIndex) icon.style.zIndex = el.zIndex;
     container.appendChild(icon);
   })
 }
 
 export function cardGenerator(arr, container) {
-  arr.forEach((item, idx) => {
+  const shuffled = [...arr].sort(() => Math.random() - 0.5);
+  shuffled.forEach((item, idx) => {
     const card = createElement(item, ICONS[idx]);
     if (card) {
       container.append(card);
     }
-  })
+  });
 }

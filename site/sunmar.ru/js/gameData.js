@@ -26,85 +26,121 @@ export const ICONS = [
   {
     name: 'ОАЭ',
     icon: 'https://b2ccdn.sunmar.ru/content/landing-pages/yout-day/icons/uae-icon.png',
-    position: {
-      xPercent: 148,
-      yPercent: -94,
-      scale: 1.3,
+    startX: '-377%',
+    startY: '29%',
+    startScale: 0,
+    endState: {
+      top: '23%',
+      left: '53%',
+      width: '35%',
+      height: '35%',
     }
   },
   {
     name: 'Египет',
     icon: 'https://b2ccdn.sunmar.ru/content/landing-pages/yout-day/icons/egypt-icon.png',
-    position: {
-      xPercent: 85,
-      yPercent: 65,
-      scale: 1,
+    startX: '-377%',
+    startY: '-119%',
+    startScale: 0,
+    endState: {
+      top: '66%',
+      left: '22%',
+      width: '25%',
+      height: '25%',
     },
     zIndex: 15
   },
   {
     name: 'Турция',
     icon: 'https://b2ccdn.sunmar.ru/content/landing-pages/yout-day/icons/turkey-icon.png',
-    position: {
-      xPercent: 106,
-      yPercent: -140,
-      scale: 1,
-    }
+    startX: '-547%',
+    startY: '111%',
+    startScale: 0,
+    endState: {
+      top: '18%',
+      left: '39%',
+      width: '20%',
+      height: '20%',
+    },
   },
   {
     name: 'Таиланд',
     icon: 'https://b2ccdn.sunmar.ru/content/landing-pages/yout-day/icons/thai-icon.png',
-    position: {
-      xPercent: 81,
-      yPercent: -97,
-      scale: 1.2,
-    }
+    startX: '-312%',
+    startY: '35%',
+    startScale: 0,
+    endState: {
+      top: '25%',
+      left: '20%',
+      width: '30%',
+      height: '30%',
+    },
   },
   {
     name: 'Россия',
     icon: 'https://b2ccdn.sunmar.ru/content/landing-pages/yout-day/icons/russia-icons.png',
-    position: {
-      xPercent: 121,
-      yPercent: -87,
-      scale: 1.2,
-    }
+    startX: '-434%',
+    startY: '27%',
+    startScale: 0,
+    endState: {
+      top: '28%',
+      left: '44%',
+      width: '27%',
+      height: '27%',
+    },
   },
   {
     name: 'Вьетнам',
     icon: 'https://b2ccdn.sunmar.ru/content/landing-pages/yout-day/icons/vietnam-icon.png',
-    position: {
-      xPercent: 44,
-      yPercent: 18,
-      scale: 1.2,
+    startX: '-284%',
+    startY: '-64%',
+    startScale: 0,
+    endState: {
+      top: '53%',
+      left: '-1%',
+      width: '25%',
+      height: '25%',
     },
     zIndex: 15
   },
   {
     name: 'Куба',
     icon: 'https://b2ccdn.sunmar.ru/content/landing-pages/yout-day/icons/cuba-icon.png',
-    position: {
-      xPercent: 164,
-      yPercent: 98,
-      scale: .6,
+    startX: '-781%',
+    startY: '-192%',
+    startScale: 0,
+    endState: {
+      top: '76%',
+      left: '72%',
+      width: '18%',
+      height: '18%',
     },
     zIndex: 15
   },
   {
     name: 'Индия',
     icon: 'https://b2ccdn.sunmar.ru/content/landing-pages/yout-day/icons/hindy-icon.png',
-    position: {
-      xPercent: 53,
-      yPercent: -154,
-      scale: 1,
-    }
+    startX: '-320%',
+    startY: '94%',
+    startScale: 0,
+    endState: {
+      top: '13%',
+      left: '7%',
+      width: '25%',
+      height: '25%',
+    },
   },
   {
     name: 'Шри-Ланка',
     icon: 'https://b2ccdn.sunmar.ru/content/landing-pages/yout-day/icons/shri-lanka-icon.png',
-    position: {
-      xPercent: 172,
-      yPercent: -96,
-      scale: 1.5,
-    }
+    startX: '-414%',
+    startY: '32%',
+    startScale: 0,
+    endState: {
+      top: '22%',
+      left: '68%',
+      width: '35%',
+      height: '35%',
+    },
   }
 ]

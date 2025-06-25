@@ -9,7 +9,7 @@ export function goToScreen(screenName) {
   });
 }
 
-export function goToGame(currentScreen) {
+export function goToGame() {
   goToScreen('game');
   const video = document.querySelector('.vimeo-video-box');
   if (video) {

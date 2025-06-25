@@ -1,12 +1,8 @@
 import {gsap} from "gsap";
+import {cardsOn, checkGameEnd} from "./handleCardClick";
 
 function getGameField() {
   return document.querySelector('.screen--game');
-}
-
-export function markSelected(card) {
-  const target = card.querySelector('.card-front');
-  gsap.to(target, {backgroundColor: '#FFE7AE', duration: 0.2});
 }
 
 export function flashRed(card) {
@@ -15,7 +11,13 @@ export function flashRed(card) {
     backgroundColor: '#F9B8B8',
     duration: 0.5,
     repeat: 3,
-    yoyo: true
+    yoyo: true,
+    onComplete: () => {
+      gsap.to(target, {
+        backgroundColor: '#FFFFFF',
+      })
+      cardsOn()
+    },
   });
 }
 
@@ -33,7 +35,12 @@ export function flashGreen(card) {
         rotateY: 180,
         transformOrigin: "center center",
         duration: 0.6,
-        ease: "power2.inOut"
+        ease: "power2.inOut",
+        onComplete: () => {
+          gsap.to(front, {
+            backgroundColor: '#FFFFFF',
+          })
+        }
       });
       gsap.to(back, {
         rotateY: 0,
@@ -49,24 +56,15 @@ export function flashGreen(card) {
         duration: 0.4,
         delay: 0.8,
         ease: "power2.inOut",
+        onComplete: () => {
+          cardsOn()
+        }
       });
     }
   });
 }
 
-export function resetCard(card) {
-  const front = card.querySelector('.card-front');
-  const gameField = getGameField();
-  gsap.to(front, {
-    backgroundColor: '#ffffff',
-    duration: 0.2,
-    onComplete: () => {
-      gameField.classList.remove('js-darken');
-    }
-  });
-}
-
-export function animateMatchIcon(matchIcon, icon) {
+export function animateMatchIcon(matchIcon) {
   const gameField = getGameField();
   gsap.to(matchIcon, {
       scale: 1,
@@ -76,9 +74,9 @@ export function animateMatchIcon(matchIcon, icon) {
       ease: "back.out(1.7)",
       onComplete: () => {
         gsap.to(matchIcon, {
-          xPercent: icon.position.xPercent,
-          yPercent: icon.position.yPercent,
-          scale: icon.position.scale,
+          x: 0,
+          y: 0,
+          scale: 1,
           duration: 0.6,
           ease: "power2.inOut",
           onComplete: () => {
@@ -86,6 +84,7 @@ export function animateMatchIcon(matchIcon, icon) {
             setTimeout(() => {
               gameField.classList.remove('js-darken', 'js-darken-remove');
             }, 500);
+            setTimeout(() => checkGameEnd(), 200)
           }
         });
       }

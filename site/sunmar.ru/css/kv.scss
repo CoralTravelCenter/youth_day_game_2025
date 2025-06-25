@@ -114,11 +114,17 @@ section.kv > article .contenu {
 .screen--game {
   > .screen__visual {
     padding-right: 20px;
-    width: 50%;
+    width: 40%;
+    flex-shrink: 0;
     position: relative;
     z-index: 12;
     filter: brightness(0.7);
     transition: all 500ms ease;
+
+    .icon {
+      position: absolute;
+      transform-origin: center;
+    }
   }
 
   > .prime-btn {
@@ -177,29 +183,8 @@ section.kv > article .contenu {
   gap: 16px;
 }
 
-.game-board__icons {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-
-  .icon {
-    width: 20%;
-    height: 20%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    scale: 0;
-    opacity: 0;
-    z-index: 10;
-
-    img {
-      object-fit: contain;
-    }
-  }
+.screen--game > .screen__visual .icon > img {
+  object-fit: contain;
 }
 
 .card {
@@ -230,7 +215,7 @@ section.kv > article .contenu {
 .card-front {
   padding: 8px;
   border-radius: 8px;
-  background: #FFF;
+  background: #FFFFFF;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -370,4 +355,32 @@ section.kv > article .contenu .kv-main-banner .vimeo-video-box .vimeo-player {
   &.js-darken-remove:after {
     animation: fadeOut 0.4s ease-in-out forwards;
   }
+}
+
+
+.screen--game > .screen__visual {
+  position: relative;
+
+  img {
+    z-index: 11;
+    position: relative;
+  }
+
+  .icon {
+    position: absolute;
+    z-index: 10;
+    width: 30%;
+    height: 30%;
+    opacity: 0;
+  }
+}
+
+.card.selected {
+  .card-front {
+    background: #FFE7AE;
+  }
+}
+
+button.loose {
+  z-index: 20;
 }
