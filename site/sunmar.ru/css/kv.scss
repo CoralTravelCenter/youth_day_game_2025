@@ -18,16 +18,6 @@ section.kv > article .contenu {
 
   .vimeo-video-box {
     @include mixins.vimeo-responsive();
-
-    iframe {
-      @include mixins.scale-iframe(1.3);
-      @include mixins.respond-up(md) {
-        @include mixins.scale-iframe(1.5);
-      }
-      @include mixins.respond-up(lg) {
-        @include mixins.scale-iframe(1.2);
-      }
-    }
   }
 
   .prime-btn {
@@ -98,7 +88,7 @@ section.kv > article .contenu {
 
   .screen__visual {
     position: relative;
-    width: 47%;
+    width: 50%;
     height: 100%;
 
     img.screen__illustration {
@@ -229,7 +219,7 @@ section.kv > article .contenu {
     padding: 3%;
     text-align: center;
     color: #000;
-    font-size: min(1vw, 14px);
+    font-size: min(2.5vw, 14px);
   }
 }
 
@@ -314,12 +304,9 @@ section.kv > article .contenu {
 }
 
 section.kv > article .contenu .kv-main-banner .vimeo-video-box .vimeo-player {
-  position: absolute;
-  bottom: -12%;
-  right: 6%;
-  width: 74%;
-  left: unset;
-  top: unset;
+  iframe {
+    width: 102%;
+  }
 }
 
 @keyframes fadeIn {
@@ -383,4 +370,132 @@ section.kv > article .contenu .kv-main-banner .vimeo-video-box .vimeo-player {
 
 button.loose {
   z-index: 20;
+}
+
+@media (max-width: 768px) {
+  .screen--intro {
+    flex-direction: column;
+  }
+
+  section.kv > article .contenu {
+    padding-inline: 16px;
+  }
+
+  .screen--intro .intro-content {
+    width: 100%;
+    padding-inline: 0;
+
+    > * {
+      text-align: center;
+    }
+  }
+
+  .screen__content {
+    align-items: start;
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .screen--intro .intro-content h1 {
+    br {
+      display: none;
+    }
+  }
+
+  .btn--start-game {
+    align-self: center;
+  }
+
+  .screen--intro .screen__visual {
+    align-self: center;
+    width: 100%;
+  }
+
+  .kv-main-banner .vimeo-video-box .vimeo-player[data-vimeo-mobile] iframe {
+    left: 0;
+    height: 130%;
+    position: absolute;
+    bottom: -11%;
+  }
+
+  .screen--game {
+    flex-direction: column;
+  }
+
+  .game-board {
+    flex-direction: column;
+  }
+
+  .card {
+    aspect-ratio: 11/9;
+  }
+
+  .card-front {
+    padding: 2px;
+  }
+
+  .game-instructions {
+    width: 85%;
+    max-width: unset;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 16px;
+  }
+
+  .card-front:has(.card-name) {
+    img {
+      height: 80% !important;
+    }
+  }
+
+  .screen--game > .screen__visual {
+    width: 100%;
+    padding: 0;
+    height: 200px;
+  }
+
+  .screen--final .screen__visual {
+    display: none;
+  }
+
+  .screen--final .screen__content {
+    padding: 0;
+  }
+
+  .final-result {
+    gap: 16px;
+
+    h3 {
+      font-size: 24px;
+    }
+  }
+
+  .final-result .final-result__actions {
+    flex-direction: column;
+  }
+
+  .final-result .final-result__actions {
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .final-result ul {
+    margin: 0;
+
+    .text {
+      font-size: 14px;
+    }
+  }
+
+  .game-board__associations, .game-board__question {
+    transform: translateY(-230%);
+  }
+
+  .button.loose {
+    right: 50% !important;
+    transform: translateX(50%) !important;
+    width: 85% !important;
+  }
 }

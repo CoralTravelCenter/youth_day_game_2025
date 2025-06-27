@@ -1,5 +1,5 @@
 import handleCardClick from "./handleCardClick";
-import {ICONS} from "../gameData";
+import {ICONS_MOB} from "../gameData";
 import {gsap} from "gsap";
 
 function createElement(item, icon) {
@@ -50,7 +50,7 @@ export function iconsGenerator(icons, container) {
 export function cardGenerator(arr, container) {
   const shuffled = [...arr].sort(() => Math.random() - 0.5);
   shuffled.forEach((item, idx) => {
-    const card = createElement(item, ICONS[idx]);
+    const card = createElement(item, ICONS_MOB[idx]);
     if (card) {
       container.append(card);
     }

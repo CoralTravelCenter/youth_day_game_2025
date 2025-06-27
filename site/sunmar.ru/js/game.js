@@ -1,5 +1,5 @@
 import {cardGenerator, iconsGenerator} from "./utils/cardGenerator";
-import {COUNTRIES, COUNTRIES_PAIRS, ICONS} from "./gameData";
+import {COUNTRIES, COUNTRIES_PAIRS, ICONS_MOB} from "./gameData";
 import {hostReactAppReady, vimeoAutoPlay} from "../../common/js/usefuls";
 import {endGameBtnInsert, goToFinal, goToGame} from "./utils/screenManager";
 import {animateCardFields} from "./utils/animations";
@@ -13,7 +13,7 @@ import {resetGame} from "./utils/handleCardClick";
   const iconsContainer = document.querySelector('.screen--game .screen__visual');
   cardGenerator(COUNTRIES, questionContainer)
   cardGenerator(COUNTRIES_PAIRS, associationContainer)
-  iconsGenerator(ICONS, iconsContainer)
+  iconsGenerator(ICONS_MOB, iconsContainer)
 
   const goToGameBtn = document.querySelector('.btn--start-game');
   goToGameBtn.addEventListener('click', (e) => {
